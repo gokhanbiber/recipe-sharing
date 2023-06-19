@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  app:
+    depends_on:
+      - postgresdb
+    build: ./recipe-sharing
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/azeti
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
+    networks:
+      - recipe-sharing    
+  postgresdb:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: azeti
+    ports:
+      - "5432:5432"
+    networks:
+      - recipe-sharing 
+networks:
+  recipe-sharing:

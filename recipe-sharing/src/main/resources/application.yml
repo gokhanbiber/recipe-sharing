@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/azeti
+    username: postgres
+    password: postgres
+  jpa:
+    showSql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddlAuto: create-drop
+  batch:
+    jdbc:
+      initializeSchema: always
+
+token:
+  key:  73df8a9e5255b3687c4e56be92815db5f7744e41a8748d1d16821d96cc024876
+
